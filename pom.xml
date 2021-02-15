@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>io.github.dlvaletnine</groupId>
 	<artifactId>habitapp-api</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>main-SNAPSHOT</version>
 	<name>habitapp-api</name>
 	<description>API for goal/habit tracking webapp</description>
 	<properties>

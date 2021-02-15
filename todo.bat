@@ -1,1 +1,1 @@
-git grep -EIi "TODO|FIXME" >> TODO.txt
+git grep -EIi "TODO|FIXME" ":(exclude)todo.bat" >> TODO.txt
