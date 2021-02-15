@@ -1,6 +1,7 @@
 - build.bat should compile/run tests when we get a little later on down the line.
 - HTTPS enable? Won't matter so long as this is just a self-hosted sort of project prolly.
-- Would be cool to auto-generate API documentation, or endpoints for REST API if possible
+- Would be cool to auto-generate API documentation, or endpoints for REST API if possible.
+- Finish setting up DB, remove static/db if you end up not using it
 
 --- AUTO GENERATED ---
 README.md:(TODO: expand this with installation instructions, run instructions, etc., in a DEVELOPING section)
