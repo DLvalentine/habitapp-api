@@ -1,20 +1,32 @@
 package io.github.dlvaletnine.habitappapi.models;
 
-// Simple response for HTTP requests
+// Simple custom response for HTTP requests
 public class HttpResponse {
-    private String response;
-    private Integer responseCode;
+    private String message;
+    private Integer status;
+    private String error;
 
-    public HttpResponse(String response, Integer responseCode) {
-        this.response = response;
-        this.responseCode = responseCode;
+    public HttpResponse(String message, Integer status) {
+        this.message = message;
+        this.status = status;
+        this.error = null;
     }
 
-    public String getResponse() {
-        return this.response;
+    public HttpResponse(String message, Integer status, String error) {
+        this.message = message;
+        this.status = status;
+        this.error = error;
     }
 
-    public Integer getResponseCode() {
-        return this.responseCode;
+    public String getMessage() {
+        return this.message;
+    }
+
+    public Integer getStatus() {
+        return this.status;
+    }
+
+    public String getError() {
+        return this.error;
     }
 }

@@ -30,8 +30,9 @@ public class UserController {
             return new HttpResponse("Success", HttpStatus.OK.value());
         } catch (Exception e) {
             return new HttpResponse(
-                String.format("Unable to create user: %1s", e.toString()),
-                HttpStatus.INTERNAL_SERVER_ERROR.value()
+                "Unable to create user, user may already exist.",
+                HttpStatus.INTERNAL_SERVER_ERROR.value(),
+                e.toString()
             );
         }
     }
