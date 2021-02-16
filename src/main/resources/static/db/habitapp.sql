@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.23, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: habitapp
+-- Host: localhost    Database: habitapp
 -- ------------------------------------------------------
 -- Server version	8.0.23
 
@@ -28,15 +28,14 @@ DROP TABLE IF EXISTS `habits`;
 CREATE TABLE `habits` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(80) NOT NULL,
-  `desc` text,
+  `description` text,
   `frequency` text,
   `created` date NOT NULL,
   `updated` date NOT NULL,
   `uid` int NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `id_UNIQUE` (`id`),
-  CONSTRAINT `userid` FOREIGN KEY (`id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='This is the most atomic part of habitapp -- habits are repeatable actions/tasks that can be scheduled to repeat on certain days/intervals';
+  UNIQUE KEY `id_UNIQUE` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='This is the most atomic part of habitapp -- habits are repeatable actions/tasks that can be scheduled to repeat on certain days/intervals';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -52,7 +51,7 @@ CREATE TABLE `users` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
   UNIQUE KEY `name_UNIQUE` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Simple mapping of profile id to profile display name to be used to map habits/goals';
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Simple mapping of profile id to profile display name to be used to map habits/goals';
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -64,4 +63,4 @@ CREATE TABLE `users` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-02-15 17:07:41
+-- Dump completed on 2021-02-16 11:11:20

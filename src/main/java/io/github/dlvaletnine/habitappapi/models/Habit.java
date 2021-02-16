@@ -3,6 +3,7 @@ package io.github.dlvaletnine.habitappapi.models;
 import java.time.LocalDate;
 
 import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,16 +17,24 @@ public class Habit {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Column(name = "name")
     private String name;
 
     @Basic(optional = true)
-    private String desc;
+    @Column(name = "description")
+    private String description;
 
     @Basic(optional = true)
+    @Column(name = "frequency")
     private String frequency;
 
+    @Column(name = "created")
     private LocalDate created;
+
+    @Column(name = "updated")
     private LocalDate updated;
+
+    @Column(name = "uid")
     private Integer uid;
 
     public Integer getId() {
@@ -40,12 +49,12 @@ public class Habit {
         this.name = name;
     }
 
-    public String getDesc() {
-        return this.desc;
+    public String getDescription() {
+        return this.description;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getFrequency() {
