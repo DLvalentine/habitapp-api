@@ -3,3 +3,10 @@
 - Would be cool to auto-generate API documentation, or endpoints for REST API if possible.
 
 --- AUTO GENERATED ---
+README.md:(TODO: expand this with installation instructions, run instructions, etc., in a DEVELOPING section)
+src/main/java/io/github/dlvalentine/habitappapi/controllers/HabitController.java:// TODO: bulk methods for delete (accept: series of ids, accept: entire user habit lib)
+src/main/java/io/github/dlvalentine/habitappapi/controllers/HabitController.java:    // TODO: Ideally, we should check the UID too to make sure only the habit for the profile/user 
+src/main/java/io/github/dlvalentine/habitappapi/controllers/HabitController.java:    // TODO: ^ try to use JPA for this instead of native query
+src/main/java/io/github/dlvalentine/habitappapi/controllers/HabitController.java:    // TODO: Depending on front-end implementation, this could just return the 
+src/main/java/io/github/dlvalentine/habitappapi/controllers/HabitController.java:            // TODO: Need to ensure that Goal (by GID) exists if passed
+src/main/java/io/github/dlvalentine/habitappapi/requests/DeleteHabitByIdRequest.java:// TODO: There is probably a way to DRY up simple request objects like this, and the GetHabit requests, unless there is some Spring thing I'm missing.
