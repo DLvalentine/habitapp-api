@@ -8,7 +8,7 @@
 		<version>2.4.2</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>io.github.dlvaletnine</groupId>
+	<groupId>io.github.dlvalentine</groupId>
 	<artifactId>habitapp-api</artifactId>
 	<version>main-SNAPSHOT</version>
 	<name>habitapp-api</name>

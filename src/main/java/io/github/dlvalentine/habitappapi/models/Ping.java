@@ -1,4 +1,4 @@
-package io.github.dlvaletnine.habitappapi.models;
+package io.github.dlvalentine.habitappapi.models;
 
 // Simple class to demonstrate/test JSON serialization on health check path
 public class Ping {

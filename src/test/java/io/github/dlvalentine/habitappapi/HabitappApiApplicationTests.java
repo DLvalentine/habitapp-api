@@ -1,4 +1,4 @@
-package io.github.dlvaletnine.habitappapi;
+package io.github.dlvalentine.habitappapi;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

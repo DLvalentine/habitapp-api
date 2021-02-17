@@ -1,9 +1,5 @@
 - build.bat should compile/run tests when we get a little later on down the line.
 - HTTPS enable? Won't matter so long as this is just a self-hosted sort of project prolly.
 - Would be cool to auto-generate API documentation, or endpoints for REST API if possible.
-- IMPORTANT: lol I mispelled my name in the package => dlvaletnine...., need to revise that.
-- IMPORTANT: I should rename `repo` dir to `repos`
 
 --- AUTO GENERATED ---
-README.md:(TODO: expand this with installation instructions, run instructions, etc., in a DEVELOPING section)
-src/main/java/io/github/dlvaletnine/habitappapi/controllers/HabitController.java:    // TODO: Depending on front-end implementation, this could just return the 

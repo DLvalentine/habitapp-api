@@ -1,4 +1,4 @@
-package io.github.dlvaletnine.habitappapi.models;
+package io.github.dlvalentine.habitappapi.models;
 
 import java.time.LocalDate;
 
@@ -36,6 +36,10 @@ public class Habit {
 
     @Column(name = "uid")
     private Integer uid;
+
+    @Basic(optional = true)
+    @Column(name = "gid")
+    private Integer gid;
 
     public Integer getId() {
         return this.id;
@@ -87,5 +91,13 @@ public class Habit {
 
     public void setUid(Integer uid) {
         this.uid = uid;
+    }
+
+    public Integer getGid() {
+        return this.gid;
+    }
+
+    public void setGid(Integer gid) {
+        this.gid = gid;
     }
 }

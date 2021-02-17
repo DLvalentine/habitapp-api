@@ -1,4 +1,4 @@
-package io.github.dlvaletnine.habitappapi.models;
+package io.github.dlvalentine.habitappapi.responses;
 
 // Simple custom response for HTTP requests
 public class HttpResponse {

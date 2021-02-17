@@ -1,4 +1,4 @@
-package io.github.dlvaletnine.habitappapi.models;
+package io.github.dlvalentine.habitappapi.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

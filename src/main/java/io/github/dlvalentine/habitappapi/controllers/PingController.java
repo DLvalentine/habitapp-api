@@ -1,10 +1,10 @@
-package io.github.dlvaletnine.habitappapi.controllers;
+package io.github.dlvalentine.habitappapi.controllers;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import io.github.dlvaletnine.habitappapi.models.Ping;
+import io.github.dlvalentine.habitappapi.models.Ping;
 
 // Simple controller for health check(s)
 @RestController

@@ -1,4 +1,4 @@
-package io.github.dlvaletnine.habitappapi.controllers;
+package io.github.dlvalentine.habitappapi.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import io.github.dlvaletnine.habitappapi.models.HttpResponse;
-import io.github.dlvaletnine.habitappapi.models.User;
-import io.github.dlvaletnine.habitappapi.repo.UserRepository;
+import io.github.dlvalentine.habitappapi.models.User;
+import io.github.dlvalentine.habitappapi.repos.UserRepository;
+import io.github.dlvalentine.habitappapi.responses.HttpResponse;
 
 @RestController
 public class UserController {

@@ -1,4 +1,4 @@
-package io.github.dlvaletnine.habitappapi;
+package io.github.dlvalentine.habitappapi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
