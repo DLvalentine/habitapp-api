@@ -27,6 +27,8 @@ public class GoalController {
     @Autowired
     private UserRepository userRepository;
 
+    private String SUCCESSFUL_CREATE = "Success!";
+
     @GetMapping(path = "/goals", consumes = "application/json")
     public Iterable<Goal> getGoalsForUser(@RequestBody(required = true) GetGoalsForUserRequest req) {
         return goalRepository.findByUid(req.getUid());
@@ -43,7 +45,7 @@ public class GoalController {
             goalRepository.deleteById(req.getId());
 
             return new HttpResponse(
-                "Success",
+                SUCCESSFUL_CREATE,
                 HttpStatus.OK.value()
             );
         } catch (Exception e) {
@@ -63,7 +65,7 @@ public class GoalController {
             }
 
             return new HttpResponse(
-                "Success",
+                SUCCESSFUL_CREATE,
                 HttpStatus.OK.value()
             );
         } catch (Exception e) {
@@ -103,7 +105,7 @@ public class GoalController {
             goalRepository.save(g);
 
             return new HttpResponse(
-                "Success",
+                SUCCESSFUL_CREATE,
                 HttpStatus.OK.value()
             );
         } catch (Exception e) {

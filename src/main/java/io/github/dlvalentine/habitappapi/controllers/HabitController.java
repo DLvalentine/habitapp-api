@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.github.dlvalentine.habitappapi.models.Habit;
+import io.github.dlvalentine.habitappapi.repos.GoalRepository;
 import io.github.dlvalentine.habitappapi.repos.HabitRepository;
 import io.github.dlvalentine.habitappapi.repos.UserRepository;
 import io.github.dlvalentine.habitappapi.requests.DeleteHabitByIdRequest;
@@ -27,6 +28,12 @@ public class HabitController {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private GoalRepository goalRepository;
+
+    private String UNABLE_TO_CREATE = "Unable to create Habit.";
+    private String SUCCESSFUL_CREATE = "Success!";
 
     @GetMapping(path = "/habits", consumes = "application/json")
     public Iterable<Habit> getHabitsForUser(@RequestBody(required = true) GetHabitsForUserRequest req) {
@@ -49,7 +56,7 @@ public class HabitController {
             habitRepository.deleteById(req.getId());
 
             return new HttpResponse(
-                "Success",
+                SUCCESSFUL_CREATE,
                 HttpStatus.OK.value()
             );
         } catch (Exception e) {
@@ -69,7 +76,7 @@ public class HabitController {
             }
 
             return new HttpResponse(
-                "Success",
+                SUCCESSFUL_CREATE,
                 HttpStatus.OK.value()
             );
         } catch (Exception e) {
@@ -90,13 +97,20 @@ public class HabitController {
         try {
             if (!userRepository.findById(habit.getUid()).isPresent()) {
                 return new HttpResponse(
-                    "Unable to create Habit.",
+                    UNABLE_TO_CREATE,
                     HttpStatus.NOT_FOUND.value(),
                     "Provided User ID does not exist. Cannot create Habit."
                 );
             }
 
-            // TODO: Need to ensure that Goal (by GID) exists if passed
+            if (habit.getGid() != null && !goalRepository.findById(habit.getGid()).isPresent()) {
+                return new HttpResponse(
+                    UNABLE_TO_CREATE,
+                    HttpStatus.NOT_FOUND.value(),
+                    "Provided Goal ID does not exist. Cannot create Habit."
+                );
+            }
+
             // TODO: Depending on front-end, may need to validate frequency string.
 
             Habit h = new Habit();
@@ -112,12 +126,12 @@ public class HabitController {
             habitRepository.save(h);
 
             return new HttpResponse(
-                "Success",
+                SUCCESSFUL_CREATE,
                 HttpStatus.OK.value()
             );
         } catch (Exception e) {
             return new HttpResponse(
-                "Unable to create Habit.",
+                UNABLE_TO_CREATE,
                 HttpStatus.INTERNAL_SERVER_ERROR.value(),
                 e.toString()
             );

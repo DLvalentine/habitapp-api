@@ -21,7 +21,7 @@ public class UserController {
         return userRepository.findAll();
     }
 
-    @PostMapping(path = "/users/create", consumes = "application/json")
+    @PostMapping(path = "/user/create", consumes = "application/json")
     public HttpResponse createUser(@RequestBody(required = true) User user) {
         try {
             User u = new User();
