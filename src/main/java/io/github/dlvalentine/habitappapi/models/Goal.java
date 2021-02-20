@@ -11,8 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "habits")
-public class Habit {
+@Table(name = "goals")
+public class Goal {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -24,10 +24,6 @@ public class Habit {
     @Column(name = "description")
     private String description;
 
-    @Basic(optional = true)
-    @Column(name = "frequency")
-    private String frequency;
-
     @Column(name = "created")
     private LocalDate created;
 
@@ -36,10 +32,6 @@ public class Habit {
 
     @Column(name = "uid")
     private Integer uid;
-
-    @Basic(optional = true)
-    @Column(name = "gid")
-    private Integer gid;
 
     public Integer getId() {
         return this.id;
@@ -59,14 +51,6 @@ public class Habit {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public String getFrequency() {
-        return this.frequency;
-    }
-
-    public void setFrequency(String frequency) {
-        this.frequency = frequency;
     }
 
     public LocalDate getCreated() {
@@ -91,13 +75,5 @@ public class Habit {
 
     public void setUid(Integer uid) {
         this.uid = uid;
-    }
-
-    public Integer getGid() {
-        return this.gid;
-    }
-
-    public void setGid(Integer gid) {
-        this.gid = gid;
     }
 }

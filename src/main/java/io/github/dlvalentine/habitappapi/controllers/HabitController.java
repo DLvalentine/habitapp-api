@@ -1,5 +1,6 @@
 package io.github.dlvalentine.habitappapi.controllers;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +20,6 @@ import io.github.dlvalentine.habitappapi.requests.GetHabitByIdRequest;
 import io.github.dlvalentine.habitappapi.requests.GetHabitsForUserRequest;
 import io.github.dlvalentine.habitappapi.responses.HttpResponse;
 
-// TODO: bulk methods for delete (accept: series of ids, accept: entire user habit lib)
-
 @RestController
 public class HabitController {
     @Autowired
@@ -34,9 +33,6 @@ public class HabitController {
         return habitRepository.findByUid(req.getUid());
     }
 
-    // TODO: Ideally, we should check the UID too to make sure only the habit for the profile/user 
-    //       currently in use is returned
-    // TODO: ^ try to use JPA for this instead of native query
     @GetMapping(path = "/habit", consumes = "application/json")
     public Optional<Habit> getHabitById(@RequestBody(required =  true) GetHabitByIdRequest req) {
         return habitRepository.findById(req.getId());
@@ -65,6 +61,26 @@ public class HabitController {
         }
     }
 
+    @DeleteMapping(path = "/habits/delete", consumes = "application/json")
+    public HttpResponse bulkDeleteHabitById(@RequestBody(required = true) List<DeleteHabitByIdRequest> reqs) {
+        try {
+            for(DeleteHabitByIdRequest req : reqs) {
+                deleteHabitById(req);
+            }
+
+            return new HttpResponse(
+                "Success",
+                HttpStatus.OK.value()
+            );
+        } catch (Exception e) {
+            return new HttpResponse(
+                "Unable to bulk delete Habits.",
+                HttpStatus.INTERNAL_SERVER_ERROR.value(),
+                e.toString()
+            );
+        }
+    }
+
     // Implicitly creates habit for a given user, as UID is a required field.
     // TODO: Depending on front-end implementation, this could just return the 
     //       newly created habit object in order to get the ID for updates...
@@ -81,6 +97,7 @@ public class HabitController {
             }
 
             // TODO: Need to ensure that Goal (by GID) exists if passed
+            // TODO: Depending on front-end, may need to validate frequency string.
 
             Habit h = new Habit();
 
@@ -90,6 +107,7 @@ public class HabitController {
             h.setCreated(habit.getCreated());
             h.setUpdated(habit.getUpdated());
             h.setUid(habit.getUid());
+            h.setGid(habit.getGid());
             
             habitRepository.save(h);
 
