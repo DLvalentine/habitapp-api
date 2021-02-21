@@ -32,8 +32,27 @@ CREATE TABLE `goals` (
   `created` date NOT NULL,
   `updated` date NOT NULL,
   `uid` int NOT NULL COMMENT 'User ID - The User that this Goal belongs to.',
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Goals are one step above habits. Collections/Categories for habits for better organization. Eventually support for tracking "progress" can be applied, or really any other means of tracking properties of a goal.';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `habit_activity`
+--
+
+DROP TABLE IF EXISTS `habit_activity`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `habit_activity` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `comment` text,
+  `created` date NOT NULL,
+  `hid` int NOT NULL,
+  `uid` int NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Since habits can be repeated (or one-off tasks), a user can use this table to record an instance of "completing" that habit/task. Eventually I''d like to have goal progress, too.';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -54,7 +73,7 @@ CREATE TABLE `habits` (
   `gid` int DEFAULT NULL COMMENT 'Goal ID - The Goal that this Habit belongs to, if it belongs to a Goal.',
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='This is the most atomic part of habitapp -- habits are repeatable actions/tasks that can be scheduled to repeat on given frequencies/intervals';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='This is the most atomic part of habitapp -- habits are repeatable actions/tasks that can be scheduled to repeat on given frequencies/intervals';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -70,7 +89,7 @@ CREATE TABLE `users` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
   UNIQUE KEY `name_UNIQUE` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Simple mapping of user id to profile display name to be used to map habits/goals. More like a profile than a user, at least in this first version of the app.';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Simple mapping of user id to profile display name to be used to map habits/goals. More like a profile than a user, at least in this first version of the app.';
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -82,4 +101,4 @@ CREATE TABLE `users` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-02-16 16:33:59
+-- Dump completed on 2021-02-20 17:58:28
